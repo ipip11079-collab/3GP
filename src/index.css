@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html, body {
+    background-color: #03060E;
+    color: #F1F5F9;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Futuristic 3D stage perspective & neon border primitives */
+.stage-3d-grid {
+  background-image:
+    linear-gradient(to right, rgba(14, 165, 233, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 165, 233, 0.08) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+.neon-panel {
+  background: linear-gradient(160deg, rgba(9, 17, 36, 0.92) 0%, rgba(4, 8, 18, 0.96) 100%);
+  border: 1px solid rgba(14, 165, 233, 0.48);
+  box-shadow:
+    0 0 24px -6px rgba(14, 165, 233, 0.28),
+    inset 0 1px 0 0 rgba(125, 211, 252, 0.16);
+}
+
+.neon-panel-active {
+  background: linear-gradient(160deg, rgba(12, 28, 62, 0.95) 0%, rgba(5, 13, 30, 0.98) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.92);
+  box-shadow:
+    0 0 22px -2px rgba(14, 165, 233, 0.55),
+    inset 0 0 14px rgba(14, 165, 233, 0.22);
+}
+
+@keyframes arrowFloatUp {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 0 26px rgba(34, 197, 94, 0.72));
+  }
+  50% {
+    transform: translateY(-10px) scale(1.03);
+    filter: drop-shadow(0 0 42px rgba(74, 222, 128, 0.95));
+  }
+}
+
+@keyframes arrowFloatDown {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 0 26px rgba(239, 68, 68, 0.75));
+  }
+  50% {
+    transform: translateY(10px) scale(1.03);
+    filter: drop-shadow(0 0 42px rgba(248, 113, 113, 0.95));
+  }
+}
+
+@keyframes orbitSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitSpinReverse {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-arrow-up {
+  animation: arrowFloatUp 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.animate-arrow-down {
+  animation: arrowFloatDown 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.animate-orbit-slow {
+  animation: orbitSpin 8s linear infinite;
+}
+
+.animate-orbit-reverse {
+  animation: orbitSpinReverse 5.5s linear infinite;
+}
+
+/* Sam's Birthday Crazy Look — Celebratory Cosmic Prism Theme */
+body[data-theme="sams-birthday"] {
+  background-color: #08031A;
+  background-image:
+    radial-gradient(circle at 12% 14%, rgba(236, 72, 153, 0.19) 0%, transparent 42%),
+    radial-gradient(circle at 86% 18%, rgba(251, 191, 36, 0.16) 0%, transparent 38%),
+    radial-gradient(circle at 50% 88%, rgba(34, 211, 238, 0.14) 0%, transparent 46%);
+}
+
+body[data-theme="sams-birthday"] .neon-panel {
+  background: linear-gradient(155deg, rgba(22, 10, 48, 0.92) 0%, rgba(9, 5, 26, 0.96) 100%);
+  border-color: rgba(244, 114, 182, 0.52);
+  box-shadow:
+    0 0 28px -6px rgba(236, 72, 153, 0.34),
+    0 0 18px -8px rgba(251, 191, 36, 0.3),
+    inset 0 1px 0 0 rgba(253, 224, 71, 0.22);
+}
+
+body[data-theme="sams-birthday"] .neon-panel-active {
+  background: linear-gradient(155deg, rgba(36, 15, 72, 0.95) 0%, rgba(13, 8, 36, 0.98) 100%);
+  border-color: rgba(251, 191, 36, 0.88);
+  box-shadow:
+    0 0 26px -2px rgba(251, 191, 36, 0.48),
+    inset 0 0 16px rgba(236, 72, 153, 0.24);
+}
+
+.birthday-banner-surface {
+  background: linear-gradient(
+    125deg,
+    rgba(88, 28, 135, 0.65) 0%,
+    rgba(15, 23, 42, 0.92) 48%,
+    rgba(131, 24, 67, 0.55) 100%
+  );
+  border: 1px solid rgba(251, 191, 36, 0.65);
+  box-shadow:
+    0 0 32px -6px rgba(236, 72, 153, 0.42),
+    0 0 18px -4px rgba(251, 191, 36, 0.32);
+}
+
+@keyframes confettiDrop {
+  0% {
+    transform: translate3d(0, -12vh, 0) rotate(0deg);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--confetti-drift, 32px), 102vh, 0) rotate(680deg);
+    opacity: 0;
+  }
+}
+
+.confetti-piece {
+  animation: confettiDrop var(--confetti-duration, 2.8s) cubic-bezier(0.22, 0.85, 0.45, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-arrow-up,
+  .animate-arrow-down,
+  .animate-orbit-slow,
+  .animate-orbit-reverse,
+  .confetti-piece {
+    animation: none;
+  }
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "3GP Trading Bot",
+  "description": "AI-powered next-candle direction prediction assistant with live market data analysis and independently verified performance statistics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
